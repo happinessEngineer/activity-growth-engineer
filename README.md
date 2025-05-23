@@ -1,4 +1,4 @@
-# Growth Engiener Mini-Activity
+# Growth Engineer Mini-Activity
 
 ## Overview
 30-minute assessment for growth engineer candidates to demonstrate skills in:
@@ -17,7 +17,7 @@ Implement a feature-flagged paywall with A/B testing:
 
 In your solution, leverage as many of the existing conventions and files in this project as appropriate.
 
-For bonus points, paste any AI-mediated work / chats / artifacts into `ai_coding_log.md`. If you're using something like cursor and do md-driven coding, include that as well, along with anything else that might be helpful.
+For bonus points, paste any AI-mediated work / chats / artifacts into `ai_coding_log.md`. If you're using something like cursor and want to showcase any of your workflows include that as well.
 
 ## Project Structure
 - `src/App.tsx` - Main application component with paywall UI
