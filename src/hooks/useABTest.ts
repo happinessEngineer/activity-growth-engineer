@@ -1,4 +1,4 @@
-import { useCallback } from 'react';
+import { useCallback, useMemo } from 'react';
 import { getFlag } from '../utils/featureFlags';
 import { track } from '../utils/analytics';
 
@@ -35,8 +35,14 @@ export function useABTest<T extends string | number | boolean | null>({
   if (!key) throw new Error('A/B test key is required');
   if (!variants?.a || !variants?.b) throw new Error('Both variant values are required');
 
-  const showVariantB = getFlag(key);
-  const value = showVariantB ? variants.b : variants.a;
+  // Memoize the feature flag check and value calculation
+  const { showVariantB, value } = useMemo(() => {
+    const showVariantB = getFlag(key);
+    return {
+      showVariantB,
+      value: showVariantB ? variants.b : variants.a
+    };
+  }, [key, variants.a, variants.b]);
 
   const trackImpression = useCallback(() => {
     if (shouldTrackImpression) {
