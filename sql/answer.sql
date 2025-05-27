@@ -1,5 +1,12 @@
-/* Return views, purchases, and CVR per variant */
+-- Analysis of A/B test conversion rates for paywall headlines
+-- This query calculates:
+-- 1. Total impressions per variant
+-- 2. Total conversions per variant
+-- 3. Conversion rate as a percentage
+-- 4. Handles cases where there are no conversions
+
 WITH impressions AS (
+  -- Count total impressions for each variant
   SELECT 
     variant,
     COUNT(*) as total_impressions
@@ -8,6 +15,7 @@ WITH impressions AS (
   GROUP BY variant
 ),
 conversions AS (
+  -- Count total conversions for each variant
   SELECT 
     variant,
     COUNT(*) as total_conversions
